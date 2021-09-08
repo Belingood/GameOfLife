@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>({{ gen_count }}) generation Live</title>
+
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+    <a class="btn btn-warning home" href="{{ url_for('index') }}">На главную</a>
+    <a class="btn btn-info refresh" href="{{ url_for('live') }}">Создать жизнь</a>
+    <div class="countgen"> <span class="cg">{{ gen_count }}</span> </div>
+
+
+    <table class="world">
+        {% for i in range(new_gen|length) %}
+            <tr>
+                {% for j in range(new_gen[0]|length) %}
+                    {% if new_gen[i][j] == 1 %}
+                        <td class="cell living-cell"></td>
+                    {% elif new_gen[i][j] == -1 %}
+                        <td class="cell dead-cell"></td>
+                    {% else %}
+                        <td class="cell"></td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+
+</body>
+
+{% block scripts %}
+        {{ super() }}
+        <script type="text/javascript">setTimeout("window.location.reload()",2000)</script>
+{% endblock %}
+</html>
