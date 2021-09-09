@@ -11,3 +11,5 @@ of the title.
 This also resolved the issue of displaying the third state of cells, which
 should have been implemented through the metaclass, for clarity, I did not
 remove it. I can later return to this implementation as an additional practice.
+
+P.S. Java is a great programming language.
