@@ -11,8 +11,6 @@
 {% block content %}
     <a class="btn btn-warning home" href="{{ url_for('index') }}">На главную</a>
     <a class="btn btn-info refresh" href="{{ url_for('live') }}">Создать жизнь</a>
-    <div class="countgen"> <span class="cg">{{ gen_count }}</span> </div>
-
 
     <table class="world">
         {% for i in range(new_gen|length) %}
@@ -29,6 +27,10 @@
             </tr>
         {% endfor %}
     </table>
+
+    <div class="countgen">
+        <span class="cg">{{ gen_count }}</span>
+    </div>
 {% endblock %}
 
 
@@ -36,6 +38,6 @@
 
 {% block scripts %}
         {{ super() }}
-        <script type="text/javascript">setTimeout("window.location.reload()",2000)</script>
+        <script type="text/javascript">setTimeout("window.location.reload()",1000)</script>
 {% endblock %}
 </html>

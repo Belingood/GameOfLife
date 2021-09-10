@@ -1,13 +1,19 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from game_of_life import GameOfLife
 
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['get', 'post'])
 def index():
-    GameOfLife(30, 25)
+    if request.method == 'POST':
+        vert = int(request.form.get('vert'))
+        horiz = int(request.form.get('horiz'))
+    else:
+        vert = 25
+        horiz = 30
+    GameOfLife(horiz, vert)
     return render_template('index.html')
 
 
